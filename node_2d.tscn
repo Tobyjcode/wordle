@@ -1,3 +1,248 @@
 [gd_scene format=3 uid="uid://wqjmot8pwy8p"]
 
-[node name="Node2D" type="Node2D" unique_id=1675300173]
+[node name="MainGameBoard" type="Control" unique_id=1358940383]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=116835997]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer" unique_id=1564408364]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/GridContainer" unique_id=295099832]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/ColorRect" unique_id=1994183799]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="ColorRect2" type="ColorRect" parent="VBoxContainer/GridContainer" unique_id=470392154]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/ColorRect2" unique_id=534316439]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="ColorRect3" type="ColorRect" parent="VBoxContainer/GridContainer" unique_id=1748350265]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/ColorRect3" unique_id=519721150]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="ColorRect4" type="ColorRect" parent="VBoxContainer/GridContainer" unique_id=1565615662]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/ColorRect4" unique_id=511267861]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="ColorRect5" type="ColorRect" parent="VBoxContainer/GridContainer" unique_id=1999454279]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/ColorRect5" unique_id=412516856]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="ColorRect6" type="ColorRect" parent="VBoxContainer/GridContainer" unique_id=255778046]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/ColorRect6" unique_id=1638514535]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="ColorRect7" type="ColorRect" parent="VBoxContainer/GridContainer" unique_id=1811814768]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/ColorRect7" unique_id=170019245]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="ColorRect8" type="ColorRect" parent="VBoxContainer/GridContainer" unique_id=1470629842]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/ColorRect8" unique_id=577830679]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="ColorRect9" type="ColorRect" parent="VBoxContainer/GridContainer" unique_id=1128325731]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/ColorRect9" unique_id=669186041]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="ColorRect10" type="ColorRect" parent="VBoxContainer/GridContainer" unique_id=577170371]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/ColorRect10" unique_id=1003401455]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="ColorRect11" type="ColorRect" parent="VBoxContainer/GridContainer" unique_id=1927339885]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/ColorRect11" unique_id=371541034]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="ColorRect12" type="ColorRect" parent="VBoxContainer/GridContainer" unique_id=1321196665]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/ColorRect12" unique_id=318429630]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="ColorRect13" type="ColorRect" parent="VBoxContainer/GridContainer" unique_id=467335596]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/ColorRect13" unique_id=353637625]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="ColorRect14" type="ColorRect" parent="VBoxContainer/GridContainer" unique_id=672385246]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/ColorRect14" unique_id=1658706436]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="ColorRect15" type="ColorRect" parent="VBoxContainer/GridContainer" unique_id=1576154597]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/ColorRect15" unique_id=776729588]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="ColorRect16" type="ColorRect" parent="VBoxContainer/GridContainer" unique_id=427505601]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/ColorRect16" unique_id=1053635084]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="ColorRect17" type="ColorRect" parent="VBoxContainer/GridContainer" unique_id=1721743228]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/ColorRect17" unique_id=1219127810]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="ColorRect18" type="ColorRect" parent="VBoxContainer/GridContainer" unique_id=1702373442]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/ColorRect18" unique_id=351536585]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="ColorRect19" type="ColorRect" parent="VBoxContainer/GridContainer" unique_id=632989667]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/ColorRect19" unique_id=327419549]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="ColorRect20" type="ColorRect" parent="VBoxContainer/GridContainer" unique_id=967573730]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/ColorRect20" unique_id=246410240]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="ColorRect21" type="ColorRect" parent="VBoxContainer/GridContainer" unique_id=1240417242]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/ColorRect21" unique_id=1468642402]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="ColorRect22" type="ColorRect" parent="VBoxContainer/GridContainer" unique_id=2119898214]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/ColorRect22" unique_id=785761661]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="ColorRect23" type="ColorRect" parent="VBoxContainer/GridContainer" unique_id=1585797920]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/ColorRect23" unique_id=556385047]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="ColorRect24" type="ColorRect" parent="VBoxContainer/GridContainer" unique_id=1433762460]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/ColorRect24" unique_id=43128586]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="ColorRect25" type="ColorRect" parent="VBoxContainer/GridContainer" unique_id=517762791]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/ColorRect25" unique_id=230335024]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="ColorRect26" type="ColorRect" parent="VBoxContainer/GridContainer" unique_id=1163796230]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/ColorRect26" unique_id=175074639]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="ColorRect27" type="ColorRect" parent="VBoxContainer/GridContainer" unique_id=2036151278]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/ColorRect27" unique_id=1321635230]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="ColorRect28" type="ColorRect" parent="VBoxContainer/GridContainer" unique_id=1180378204]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/ColorRect28" unique_id=2103195764]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="ColorRect29" type="ColorRect" parent="VBoxContainer/GridContainer" unique_id=1670475835]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer/ColorRect29" unique_id=1546953300]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Status" type="Label" parent="VBoxContainer" unique_id=413413087]
+layout_mode = 2
