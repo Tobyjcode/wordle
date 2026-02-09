@@ -1,0 +1,14 @@
+# Godot 4
+.godot/
+.import/
+export/
+build/
+*.tmp
+*.log
+
+# Editor/IDE
+.vscode/
+
+# OS junk
+.DS_Store
+Thumbs.db
