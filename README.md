@@ -12,5 +12,5 @@ A Wordle-style game made in Godot 4.
 ## Testing
 - Unit tests use the addons framework (GUT).
 
-## License/Credits
-- Add license and credits here.
+## License
+MIT — see [LICENSE](LICENSE).

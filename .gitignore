@@ -1,6 +1,7 @@
 # Godot 4
 .godot/
 .import/
+*.import
 export/
 build/
 *.tmp
@@ -12,3 +13,14 @@ build/
 # OS junk
 .DS_Store
 Thumbs.db
+
+# Godot temp/user
+.gut/
+.gut_editor*
+.godot/editor_layout.cfg
+.godot/editor_layouts.cfg
+
+# Other IDE/temp
+.idea/
+*.swp
+*.swo
