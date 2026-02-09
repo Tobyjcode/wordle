@@ -21,3 +21,15 @@ const COLOR_TEXT := Color("ffffff")
 # Cached nodes (auto lookup when scene is ready)
 @onready var grid: GridContainer = $VBoxContainer/GridContainer
 @onready var status_label: Label = $VBoxContainer/Status
+
+# Core game script (preload to avoid class lookup errors)
+const WordleGame = preload("res://Scripts/wordle_game.gd")
+
+# Core game logic instance
+var game := WordleGame.new()
+
+# Set initial UI text when the scene loads
+func _ready() -> void:
+	game.load_word_list("res://Data/wordle_ord.txt")
+	game.start_new_game()
+	status_label.text = "Type a 5-letter word and press Enter."
