@@ -24,3 +24,7 @@ Thumbs.db
 .idea/
 *.swp
 *.swo
+
+#course PDFs (do not commit)
+.github/copilot-instructions.md
+SU opstart uge 1 - Spiludvikling og Unittests - Wordle.pdf
