@@ -3,10 +3,15 @@ class_name WordleGame
 extends RefCounted
 
 const DEFAULT_WORD_LENGTH := 5
+const DEFAULT_MAX_ATTEMPTS := 6
 
 var _word_length := DEFAULT_WORD_LENGTH
+var _max_attempts := DEFAULT_MAX_ATTEMPTS
 var _word_list: PackedStringArray = PackedStringArray()
 var _secret_word := ""
+var _attempts_used := 0
+var _is_over := false
+var _is_win := false
 
 # Load a word list from a text file (one word per line).
 func load_word_list(path: String) -> void:
@@ -32,14 +37,23 @@ func set_word_list(words: PackedStringArray) -> void:
 # Pick a random secret word from the list and reset state.
 func start_new_game() -> void:
 	_secret_word = ""
+	_attempts_used = 0
+	_is_over = false
+	_is_win = false
 	if _word_list.size() == 0:
 		push_error("Word list is empty; load words before starting.")
 		return
 	var index := randi() % _word_list.size()
 	_secret_word = _word_list[index]
 
+# Get the current secret word (for UI/testing).
+func get_secret_word() -> String:
+	return _secret_word
+
 # Submit a guess and get minimal feedback.
 func guess(guess_word: String) -> Dictionary:
+	if _is_over:
+		return {"ok": false, "error": "Game is over."}
 	if _secret_word == "":
 		return {"ok": false, "error": "Game not started."}
 	var cleaned := guess_word.strip_edges().to_lower()
@@ -48,8 +62,29 @@ func guess(guess_word: String) -> Dictionary:
 	if not _word_list.has(cleaned):
 		return {"ok": false, "error": "Guess is not in word list."}
 
+	_attempts_used += 1
 	var feedback := _evaluate_feedback(cleaned)
-	return {"ok": true, "guess": cleaned, "feedback": feedback}
+	_is_win = _is_all_correct(feedback)
+	if _is_win or _attempts_used >= _max_attempts:
+		_is_over = true
+
+	return {
+		"ok": true,
+		"guess": cleaned,
+		"feedback": feedback,
+		"attempts_used": _attempts_used,
+		"attempts_left": _max_attempts - _attempts_used,
+		"is_win": _is_win,
+		"is_over": _is_over
+	}
+
+# Query if the game is over.
+func is_game_over() -> bool:
+	return _is_over
+
+# Remaining attempts.
+func attempts_left() -> int:
+	return _max_attempts - _attempts_used
 
 # Compute feedback with duplicate-letter handling.
 func _evaluate_feedback(guess_word: String) -> Array:
@@ -79,3 +114,10 @@ func _evaluate_feedback(guess_word: String) -> Array:
 			feedback[i] = "gray"
 
 	return feedback
+
+# Check if all feedback entries are correct.
+func _is_all_correct(feedback: Array) -> bool:
+	for status in feedback:
+		if status != "green":
+			return false
+	return true
