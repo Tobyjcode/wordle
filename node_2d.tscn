@@ -10,6 +10,7 @@ grid_container = NodePath("VBoxContainer/GridContainer")
 status = NodePath("VBoxContainer/Status")
 
 [node name="Background" type="ColorRect" parent="." unique_id=2000000001]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color(0.12, 0.12, 0.12, 1)
