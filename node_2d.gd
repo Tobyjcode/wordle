@@ -21,6 +21,7 @@ const COLOR_TEXT := Color("ffffff")
 # Cached nodes (auto lookup when scene is ready)
 @onready var grid: GridContainer = $VBoxContainer/GridContainer
 @onready var status_label: Label = $VBoxContainer/Status
+@onready var keyboard_container: GridContainer = $VBoxContainer/Keyboard
 
 
 # Core game logic instance
@@ -28,6 +29,12 @@ var game := WordleGame.new()
 
 # 2D array of tiles (row -> col)
 var tiles: Array = []
+
+# Keyboard letter buttons
+var keyboard_keys: Dictionary = {}
+
+# Letter status tracking for keyboard (best status per letter)
+var letter_status: Dictionary = {}
 
 # Current input position
 var current_row := 0
@@ -38,7 +45,33 @@ func _ready() -> void:
 	game.load_word_list("res://Data/wordle_ord.txt")
 	game.start_new_game()
 	_collect_tiles()
+	_setup_keyboard()
 	status_label.text = "Type a 5-letter word. Attempts left: %d" % game.attempts_left()
+
+# Setup keyboard display
+func _setup_keyboard() -> void:
+	var keyboard_rows := [
+		"QWERTYUIOP",
+		"ASDFGHJKL",
+		"ZXCVBNM"
+	]
+	
+	for row_text in keyboard_rows:
+		for ch in row_text:
+			var key := ColorRect.new()
+			key.custom_minimum_size = Vector2(32, 40)
+			key.color = COLOR_EMPTY
+			var label := Label.new()
+			label.text = ch
+			label.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+			label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+			label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+			label.add_theme_color_override("font_color", COLOR_TEXT)
+			label.add_theme_font_size_override("font_size", 16)
+			key.add_child(label)
+			keyboard_container.add_child(key)
+			keyboard_keys[ch.to_lower()] = key
+			letter_status[ch.to_lower()] = ""
 
 # Collect 30 tiles from the GridContainer into a 6x5 array
 func _collect_tiles() -> void:
@@ -171,7 +204,33 @@ func _restart_game() -> void:
 		for col in WORDLENGTH:
 			clear_tile(row, col)
 			tiles[row][col].color = COLOR_EMPTY
+	# Reset keyboard
+	for letter in keyboard_keys:
+		keyboard_keys[letter].color = COLOR_EMPTY
+		letter_status[letter] = ""
 	status_label.text = "New game. Attempts left: %d" % game.attempts_left()
+
+# Update keyboard letter color based on feedback (keep best status)
+func _update_keyboard_letter(letter: String, status: String) -> void:
+	if not keyboard_keys.has(letter):
+		return
+	
+	var current_status: String = letter_status[letter]
+	var new_color := COLOR_EMPTY
+	
+	# Priority: green > yellow > gray
+	if status == "green" or current_status == "green":
+		new_color = COLOR_CORRECT
+		letter_status[letter] = "green"
+	elif status == "yellow" or (current_status == "yellow" and status != "green"):
+		new_color = COLOR_PRESENT
+		letter_status[letter] = "yellow"
+	elif status == "gray":
+		new_color = COLOR_ABSENT
+		if current_status == "":
+			letter_status[letter] = "gray"
+	
+	keyboard_keys[letter].color = new_color
 
 # Apply feedback colors to a row
 func _apply_feedback(row: int, feedback: Array) -> void:
@@ -187,3 +246,9 @@ func _apply_feedback(row: int, feedback: Array) -> void:
 				tile.color = COLOR_ABSENT
 			_:
 				tile.color = COLOR_EMPTY
+		
+		# Update keyboard
+		var label: Label = tile.get_node_or_null("Label")
+		if label != null:
+			var letter := label.text.to_lower()
+			_update_keyboard_letter(letter, status)

@@ -273,3 +273,9 @@ offset_bottom = 23.0
 
 [node name="Status" type="Label" parent="VBoxContainer" unique_id=413413087]
 layout_mode = 2
+
+[node name="Keyboard" type="GridContainer" parent="VBoxContainer" unique_id=242837743]
+layout_mode = 2
+theme_override_constants/h_separation = 4
+theme_override_constants/v_separation = 4
+columns = 10
