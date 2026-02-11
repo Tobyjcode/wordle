@@ -59,15 +59,16 @@ func _collect_tiles() -> void:
 				push_error("Tile at index %d is not a ColorRect." % index)
 				continue
 			tile.color = COLOR_EMPTY
-			tile.custom_minimum_size = Vector2(52, 52)
+			tile.custom_minimum_size = Vector2(64, 64)
 			var label := tile.get_node_or_null("Label") as Label
 			if label != null:
-				label.anchor_right = 1.0
-				label.anchor_bottom = 1.0
+				label.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+				label.grow_horizontal = Control.GROW_DIRECTION_BOTH
+				label.grow_vertical = Control.GROW_DIRECTION_BOTH
 				label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 				label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 				label.add_theme_color_override("font_color", COLOR_TEXT)
-				label.add_theme_font_size_override("font_size", 24)
+				label.add_theme_font_size_override("font_size", 32)
 			row_tiles.append(tile)
 		tiles.append(row_tiles)
 
@@ -80,7 +81,6 @@ func set_tile_letter(row: int, col: int, ch: String) -> void:
 	var tile: ColorRect = tiles[row][col]
 	var label: Label = tile.get_node_or_null("Label")
 	if label == null:
-		push_error("Tile is missing a Label child at %d,%d" % [row, col])
 		return
 	label.text = ch.to_upper()
 
